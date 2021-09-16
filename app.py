@@ -49,7 +49,6 @@ cars=cars.iloc[:,1:]
 df=pd.concat([input_df,cars],axis=0)
 
 final_df=pd.get_dummies(df,drop_first=True)
-
 final_df=final_df[:1]
 
 st.subheader('User Input features')
