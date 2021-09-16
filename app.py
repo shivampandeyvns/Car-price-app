@@ -27,7 +27,7 @@ st.sidebar.header('User Input Features')
 def user_input_features():
     present_price=st.sidebar.slider('Present Price',0.32,92.6,10.5)
     kms_driven=st.sidebar.slider('Kilometers Driven',500,500000,100000)
-    Owner=st.sidebar.selectbox('Car type',('First Hand','Second Hand','Third Hand'))
+    Owner=st.sidebar.slider('Car type 0:1st Hand,1:2nd Hand,2:3rd Hand ',0,2,1)
     Years_old=st.sidebar.slider('Years Old',2,17,8)
     Fuel_type=st.sidebar.selectbox('Fuel Type',('Petrol','Diesel','CNG'))
     Seller_type=st.sidebar.selectbox('Seller Type',('Individual','Dealer'))
