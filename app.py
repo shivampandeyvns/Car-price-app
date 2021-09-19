@@ -130,7 +130,8 @@ elif (choice=="Login Page"):
                 expander_bar.markdown("""
                 * **Python libraries:** pandas, PIL, streamlit, numpy, scikit-learn, random_forest_regressor.
                 * **Data source:** [CarDekho.com on Kaggle](https://www.kaggle.com/nehalbirla/vehicle-dataset-from-cardekho/version/3).
-                * **Credit:** Made by Shivam Pandey
+                * **Credit:** Made by Shivam Pandey 
+                * Motivation provided by **Lucifer8729**
                 """)
 
             elif(task=="Find Price"):
