@@ -20,6 +20,12 @@ def login_user(username,password):
     c.execute('SELECT * FROM usertable WHERE username=? AND password=?',(username,password))
     data=c.fetchall()
     return data
+def update_user(old_user,updated_user,updated_pass):
+    c.execute('UPDATE usertable SET username=?,password=? WHERE username=?',(updated_user,updated_pass,old_user))
+    conn.commit()
+def delete_account(user):
+    c.execute('DELETE FROM usertable where username=?',(user,))
+    conn.commit()
 
 st.set_page_config(layout="wide")
 
@@ -110,7 +116,7 @@ elif (choice=="Login Page"):
         if(result):
             st.success("Logged in as {}".format(username))
 
-            task=st.selectbox("Task",["App info","Find Price","How to use the calculator","Contacts"])
+            task=st.selectbox("Task",["App info","Find Price","How to use the calculator","Update Username and Password","Delete Account","Contacts"])
 
             if(task=="App info"):
 
@@ -145,7 +151,23 @@ elif (choice=="Login Page"):
                 * **Fuel Type:** Enter the fuel type of your Car.
                 * **Seller Type:** Enter Seller Type of your car.
                 * **Transmission Type:** Enter the transmission type of your car.
-                """)            
+                """)
+            elif(task=="Update Username and Password"):
+                st.write('Enter the Username or password')
+                st.write('If you want to change any one of the details then just enter your old information again in that column')
+                st.write('You will be asked to login again')
+                new_username=st.text_input('Enter new UserName')
+                new_pass=st.text_input('Enter New password')
+                if(st.checkbox('Change Credentials')):
+                    update_user(username,new_username,new_pass)
+                    st.success('Account Credentials Updated')
+            elif(task=='Delete Account'):
+                st.write('Please press the button below to delete your account')
+                st.write('Please be cautious as this step is irreversible')
+                if(st.button('Delete Account')):
+                    delete_account(username)
+                    st.success('Account Successfully Removed')
+
         else:
             st.warning("Incorrext username/password")
 elif(choice=='Sign up'):
